@@ -280,8 +280,8 @@ class _StepperState extends State<Stepper> with TickerProviderStateMixin {
           : Colors.black38;
     } else {
       return widget.steps[index].isActive
-          ? themeData.accentColor
-          : themeData.backgroundColor;
+          ? themeData.colorScheme.secondary
+          : themeData.colorScheme.background;
     }
   }
 
@@ -387,7 +387,7 @@ class _StepperState extends State<Stepper> with TickerProviderStateMixin {
             MaterialButton(
               onPressed: widget.onStepContinue,
               color: _isDark()
-                  ? themeData.backgroundColor
+                  ? themeData.colorScheme.background
                   : themeData.primaryColor,
               textColor: Colors.white,
               textTheme: ButtonTextTheme.normal,
@@ -417,12 +417,12 @@ class _StepperState extends State<Stepper> with TickerProviderStateMixin {
       case StepState.indexed:
       case StepState.editing:
       case StepState.complete:
-        return textTheme.bodyText1;
+        return textTheme.bodyLarge;
       case StepState.disabled:
-        return textTheme.bodyText1!
+        return textTheme.bodyLarge!
             .copyWith(color: _isDark() ? _kDisabledDark : _kDisabledLight);
       case StepState.error:
-        return textTheme.bodyText1!
+        return textTheme.bodyLarge!
             .copyWith(color: _isDark() ? _kErrorDark : _kErrorLight);
     }
   }
@@ -434,12 +434,12 @@ class _StepperState extends State<Stepper> with TickerProviderStateMixin {
       case StepState.indexed:
       case StepState.editing:
       case StepState.complete:
-        return textTheme.caption;
+        return textTheme.bodySmall;
       case StepState.disabled:
-        return textTheme.caption!
+        return textTheme.bodySmall!
             .copyWith(color: _isDark() ? _kDisabledDark : _kDisabledLight);
       case StepState.error:
-        return textTheme.caption!
+        return textTheme.bodySmall!
             .copyWith(color: _isDark() ? _kErrorDark : _kErrorLight);
     }
   }
@@ -627,7 +627,6 @@ class _StepperState extends State<Stepper> with TickerProviderStateMixin {
             key: Key('__stepper_horizontal_step_${widget.currentStep}__'),
             curve: Curves.easeIn,
             duration: kThemeAnimationDuration,
-            vsync: this,
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(24.0),
