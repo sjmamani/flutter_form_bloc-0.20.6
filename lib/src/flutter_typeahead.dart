@@ -1194,7 +1194,7 @@ class _SuggestionsListState<T> extends State<_SuggestionsList<T>>
             padding: const EdgeInsets.all(8.0),
             child: Text(
               'Error: ${this._error}',
-              style: TextStyle(color: Theme.of(context).errorColor),
+              style: TextStyle(color: Theme.of(context).colorScheme.error),
             ),
           );
   }

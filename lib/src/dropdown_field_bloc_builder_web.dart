@@ -230,7 +230,7 @@ class _DropdownFieldBlocBuilderWebState<Value>
   List<DropdownMenuItem<Value>> _buildItems(
     Iterable<Value>? items,
   ) {
-    final style = Theme.of(context).textTheme.subtitle1!.copyWith(
+    final style = Theme.of(context).textTheme.titleMedium!.copyWith(
           color: ThemeData.estimateBrightnessForColor(
                       Theme.of(context).canvasColor) ==
                   Brightness.dark

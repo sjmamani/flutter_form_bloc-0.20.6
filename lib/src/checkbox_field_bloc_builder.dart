@@ -118,7 +118,7 @@ class CheckboxFieldBlocBuilder extends StatelessWidget {
     return Checkbox(
       checkColor: Style.getIconColor(
         customColor: checkColor,
-        defaultColor: Theme.of(context).toggleableActiveColor,
+        defaultColor: Theme.of(context).colorScheme.secondary,
       ),
       activeColor: activeColor,
       value: state.value,
