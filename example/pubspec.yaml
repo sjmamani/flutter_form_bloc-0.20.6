@@ -1,5 +1,6 @@
 name: flutter_form_bloc_example
 description: flutter_form_bloc example
+publish_to: none
 
 version: 1.0.0+1
 
