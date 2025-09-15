@@ -626,7 +626,7 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
     //   this._suggestionsBox._overlayEntry?.remove();
     // }
     this._suggestionsBox!.widgetMounted = false;
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     _keyboardSubscription.cancel();
 
     _effectiveFocusNode!.removeListener(_focusNodeListener);
@@ -646,7 +646,7 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     _hideSuggestionsController = PublishSubject<void>();
 
     if (widget.textFieldConfiguration.controller == null) {
@@ -678,7 +678,7 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
       }
     };
 
-    WidgetsBinding.instance!.addPostFrameCallback((duration) {
+    WidgetsBinding.instance.addPostFrameCallback((duration) {
       if (mounted) {
         this._initOverlayEntry();
         // calculate initial suggestions list size
@@ -692,24 +692,21 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
         }
 
         ScrollableState? scrollableState = Scrollable.of(context);
-        if (scrollableState != null) {
-          // The TypeAheadField is inside a scrollable widget
-          scrollableState.position.isScrollingNotifier.addListener(() {
-            bool isScrolling =
-                scrollableState.position.isScrollingNotifier.value;
-            _resizeOnScrollTimer?.cancel();
-            if (isScrolling) {
-              // Scroll started
-              _resizeOnScrollTimer =
-                  Timer.periodic(_resizeOnScrollRefreshRate, (timer) {
-                _suggestionsBox!.resize();
-              });
-            } else {
-              // Scroll finished
+        // The TypeAheadField is inside a scrollable widget
+        scrollableState.position.isScrollingNotifier.addListener(() {
+          bool isScrolling = scrollableState.position.isScrollingNotifier.value;
+          _resizeOnScrollTimer?.cancel();
+          if (isScrolling) {
+            // Scroll started
+            _resizeOnScrollTimer =
+                Timer.periodic(_resizeOnScrollRefreshRate, (timer) {
               _suggestionsBox!.resize();
-            }
-          });
-        }
+            });
+          } else {
+            // Scroll finished
+            _suggestionsBox!.resize();
+          }
+        });
       }
     });
   }
@@ -717,7 +714,7 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>>
   /// TODO: Create Pull Request
   /// Called for resize the suggestions box when have error
   void _onChange() {
-    WidgetsBinding.instance!.addPostFrameCallback((duration) {
+    WidgetsBinding.instance.addPostFrameCallback((duration) {
       _suggestionsBox!.resize();
     });
   }
@@ -971,7 +968,7 @@ class _SuggestionsListState<T> extends State<_SuggestionsList<T>>
     widget.controller!.addListener(this._controllerListener);
 
     _hideSuggestionsSubscription = widget.hideSuggestions.listen((_) {
-      WidgetsBinding.instance!.addPostFrameCallback((duration) {
+      WidgetsBinding.instance.addPostFrameCallback((duration) {
         if (this.mounted) {
           setState(() {
             this
@@ -1676,7 +1673,7 @@ class _SuggestionsBox {
   void open() {
     if (this._isOpened) return;
     assert(this._overlayEntry != null);
-    Overlay.of(context)!.insert(this._overlayEntry!);
+    Overlay.of(context).insert(this._overlayEntry!);
     this._isOpened = true;
   }
 

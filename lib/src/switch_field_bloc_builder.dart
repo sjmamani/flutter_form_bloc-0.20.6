@@ -181,7 +181,7 @@ class SwitchFieldBlocBuilder extends StatelessWidget {
         nextFocusNode: nextFocusNode,
         onChanged: booleanFieldBloc.updateValue,
       ),
-      activeColor: activeColor,
+      activeThumbColor: activeColor,
       activeThumbImage: activeThumbImage,
       activeTrackColor: activeTrackColor,
       autofocus: autofocus,

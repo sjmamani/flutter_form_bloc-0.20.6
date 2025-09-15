@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 const TextStyle _kStepStyle = TextStyle(
   fontSize: 12.0,
@@ -281,7 +280,7 @@ class _StepperState extends State<Stepper> with TickerProviderStateMixin {
     } else {
       return widget.steps[index].isActive
           ? themeData.colorScheme.secondary
-          : themeData.colorScheme.background;
+          : themeData.colorScheme.surface;
     }
   }
 
@@ -387,7 +386,7 @@ class _StepperState extends State<Stepper> with TickerProviderStateMixin {
             MaterialButton(
               onPressed: widget.onStepContinue,
               color: _isDark()
-                  ? themeData.colorScheme.background
+                  ? themeData.colorScheme.surface
                   : themeData.primaryColor,
               textColor: Colors.white,
               textTheme: ButtonTextTheme.normal,

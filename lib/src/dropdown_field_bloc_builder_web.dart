@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart'
     hide DropdownButton, DropdownMenuItem, DropdownButtonHideUnderline;
 import 'package:flutter/scheduler.dart';
@@ -90,10 +89,10 @@ class _DropdownFieldBlocBuilderWebState<Value>
   void initState() {
     super.initState();
 
-    SchedulerBinding.instance!.addPostFrameCallback((_) => setState(() {}));
+    SchedulerBinding.instance.addPostFrameCallback((_) => setState(() {}));
 
     _dropdownHeightController.listen((height) {
-      SchedulerBinding.instance!.addPostFrameCallback((_) {
+      SchedulerBinding.instance.addPostFrameCallback((_) {
         setState(() {
           _dropdownHeight = height;
         });

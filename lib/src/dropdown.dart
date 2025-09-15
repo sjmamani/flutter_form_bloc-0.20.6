@@ -102,8 +102,8 @@ class _DropdownScrollBehavior extends ScrollBehavior {
       Theme.of(context).platform;
 
   @override
-  Widget buildViewportChrome(
-          BuildContext context, Widget child, AxisDirection axisDirection) =>
+  Widget buildOverscrollIndicator(
+          BuildContext context, Widget child, ScrollableDetails details) =>
       child;
 
   @override
@@ -761,7 +761,7 @@ class _DropdownButtonState<T> extends State<DropdownButton<T>>
   void initState() {
     super.initState();
     _updateSelectedIndex();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
 
     callOnPressedSubscription = widget.callOnPressed.listen((_) {
       if (mounted) {
@@ -772,7 +772,7 @@ class _DropdownButtonState<T> extends State<DropdownButton<T>>
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     _removeDropdownRoute();
 
     callOnPressedSubscription.cancel();
